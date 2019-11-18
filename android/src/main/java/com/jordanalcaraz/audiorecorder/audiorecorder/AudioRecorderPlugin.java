@@ -147,7 +147,7 @@ public class AudioRecorderPlugin implements MethodCallHandler {
       case ".mp4":
       case ".aac":
       case ".m4a":
-        return MediaRecorder.OutputFormat.MPEG_4;
+        return MediaRecorder.OutputFormat.AAC_ADTS;
       default:
         return MediaRecorder.OutputFormat.MPEG_4;
     }
