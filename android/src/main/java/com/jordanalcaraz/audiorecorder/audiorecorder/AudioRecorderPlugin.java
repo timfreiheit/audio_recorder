@@ -3,6 +3,7 @@ package com.jordanalcaraz.audiorecorder.audiorecorder;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
 import android.os.Environment;
 import android.util.Log;
@@ -102,6 +103,13 @@ public class AudioRecorderPlugin implements MethodCallHandler {
 
   private void startNormalRecording() {
     mRecorder = new MediaRecorder();
+
+    final int bitDepth = 16;
+    final int sampleRate = 44100;
+    final int bitRate = sampleRate * bitDepth;
+    mRecorder.setAudioEncodingBitRate(bitRate);
+    mRecorder.setAudioSamplingRate(sampleRate);
+
     mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
     mRecorder.setOutputFormat(getOutputFormatFromString(mExtension));
     mRecorder.setOutputFile(mFilePath);
